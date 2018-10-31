@@ -13,7 +13,7 @@ router.post('/reviews', reviewsController.addReview)
 
 // movies API
 router.get('/movies', moviesController.getAllMovies)
-//router.get('/movies/:id', moviesController.getMovie)
+router.get('/movies/:id', moviesController.getMovie)
 router.post('/movies', moviesController.addMovie)
 
 module.exports = router

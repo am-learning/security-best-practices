@@ -1,5 +1,5 @@
 - The folder name has to be 'test', not 'tests' 
 - The app in server.js has to be exported (command: module.exports = app) to be accessible in the tests
-- The server should be running independently for the tests to run ???
+- The server doesnt need to be running independently. It will be launched by the test automatically (due to the server = require('../server'))
 - the tests can be run by typing 'mocha' at the command prompt or running the script 'test' (command: npm run test)
-- to run a single test file ... ???
+- to run a single test file: npm test 'path/to/filename.js' e.g if we are in directory rest-api, type 'npm test test/api.test.js'

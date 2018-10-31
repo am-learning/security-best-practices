@@ -1,17 +1,14 @@
 //During the test the env variable is set to test
 process.env.NODE_ENV = 'test'
 
-//let mongoose = require("mongoose")
-//let Movie = require('../models/movie')
-
-//Require the dev-dependencies
+// dev dependencies
 let chai = require('chai')              // cheatsheet: https://gist.github.com/yoavniran/1e3b0162e1545055429e
-let chaiHttp = require('chai-http')    
-let request = require('supertest')
+let chaiHttp = require('chai-http')     // alternative is 'supertest'
 let should = chai.should()
 let server
 chai.use(chaiHttp)
 
+// help: https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
 // Describe tests for Movies API
 describe('Testing Movies API', () => {
     // beforeEach Hook
@@ -43,19 +40,21 @@ describe('Testing Movies API', () => {
 
 
     // since there is no data, I will first test the 'post' endpoint 
-    // and insert a new movie 
-    describe('endpoint /POST movies', () =>{
-        // behavior: it should find the endpoint (status 202)
+    // and insert a new movie (which will then help with the 'get' request) 
+    describe('endpoint /POST movies', ()=> {
+        // behavior: it should find the endpoint (status 200)
         // behavior: it should insert one new movie record
-            // the count before insert should be 0
+            // the count before insert would be 0
             // the count after insert should be 1
-        // behavior: it should return a message "Successfully inserted new Movie"  
+        // behavior: it should return a json object
+        // behavior: the json object should have a property message 
+        // behavior: the value of message should be "Successfully inserted new Movie"  
         it('should insert a new movie', (done)=>{
             let newMovie = {
-                title: "The Lord of the Rings",
-                director: "J.R.R. Tolkien",
-                producer: "",
-                year: 2005
+                id: 1,
+                title: "The Lord of the Rings: The Fellowship of the Ring",
+                director: "Peter Jackson",
+                year: 2001
             }
             chai.request(server)
                 .post('/api/movies')
@@ -65,19 +64,21 @@ describe('Testing Movies API', () => {
 
                     res.should.have.status(200)
                     res.body.should.be.an('object')
+                    res.body.should.have.own.property('message')
                     res.body.message.should.equal('Successfully inserted new Movie')
                     done()
                 })
         })
     })
 
-    describe('endpoint /GET movies', ()=>{
+    describe('endpoint /GET movies', ()=> {
+        // behavior: it should return a status of 200
+        // behavior: it should return an array of json objects
         // behavior: it should return all movies 
-            // how to check the counts?
+            // Determine the count:
             // since we started with an empty storage (beforeEach) => count = 0
             // then inserted one movie in the test for '/POST movie' endpoint => count = 1
-        // behavior: it should return a array of json objects
-        // behavior: it should return a status of 200
+            // therefore, length of the return array will be 1        
         it('should return all the movies', (done) => {
             chai.request(server)
                 .get('/api/movies')
@@ -88,11 +89,56 @@ describe('Testing Movies API', () => {
                     res.should.have.status(200)
                     res.body.should.be.a('array')
                     res.body.length.should.be.eql(1)
-
                     done();
             });
         })
     }) 
+
+
+    describe('endpoint /GET/:id movie by id', ()=> {
+        // behavior: it should return a status of 200
+        // behavior: it should return a json object
+        // behavior: the json object should have keys 'id', 'title', 'director', and 'year'
+        it('should return a movie given an id (case: id exists)', (done)=> {
+            chai.request(server)
+                .get('/api/movies/1')       // movie id  = 1
+                .end((err, res) => {
+                    if (err) return done(err)
+
+                    //console.log(res.body)
+                    res.should.have.status(200)
+                    res.body.should.be.an('object')
+                    res.body.should.have.own.property('id')
+                    res.body.should.have.own.property('title')
+                    res.body.should.have.own.property('director')
+                    res.body.should.have.own.property('year')
+
+                    done()
+                })
+        })
+
+        // behavior: it should return a status of 200
+        // behavior: it should return a json object 
+        // behavior: the json object should have a property message
+        // behavior: value of message should be 'Movie with given id not found'        
+        it('should return a message given an id (case: id does not exist)', (done)=> {
+            chai.request(server)
+                .get('/api/movies/2')       // movie id  = 2 doesnt exist
+                .end((err, res) => {
+                    if (err) return done(err)
+
+                    //console.log(res.body)
+                    res.should.have.status(200)
+                    res.body.should.be.an('object')
+                    res.body.should.have.own.property('message')
+                    res.body.message.should.equal('Movie with given id not found')
+                    
+                    done()
+                })
+        })
+
+    })
+    
 
 
 })
