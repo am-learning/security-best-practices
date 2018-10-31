@@ -1,0 +1,5 @@
+- The folder name has to be 'test', not 'tests' 
+- The app in server.js has to be exported (command: module.exports = app) to be accessible in the tests
+- The server should be running independently for the tests to run ???
+- the tests can be run by typing 'mocha' at the command prompt or running the script 'test' (command: npm run test)
+- to run a single test file ... ???
