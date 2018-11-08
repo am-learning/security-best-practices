@@ -4,15 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import connection from '@/helpers/connect'
-
+import 'bootstrap'
+import 'jquery-ui-dist/jquery-ui'
+import BootstrapVue from "bootstrap-vue"
 import moment from 'moment'
 import Toastr from 'vue-toastr'
 import ElementUI from 'element-ui'
-import 'bootstrap'
-import 'jquery-ui-dist/jquery-ui'
 
 // Styles
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'font-awesome/css/font-awesome.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
@@ -22,6 +23,7 @@ import '@/assets/css/style.css'
 Vue.config.productionTip = false
 Vue.use(ElementUI, { locale })
 Vue.use(Toastr)
+Vue.use(BootstrapVue)
 
 Vue.prototype.$moment = moment
 Vue.prototype.$server = connection
@@ -30,6 +32,6 @@ Vue.prototype.$server = connection
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  components: { App }
 })

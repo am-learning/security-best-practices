@@ -26,10 +26,21 @@
                     <h3>Register</h3>
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Email *" v-model="newUser.username" />
+                            <input type="text" class="form-control" placeholder="email *" v-model="newUser.username" />
                         </div>
                         <div class="input-group mb-3">
-                            <input :type="passwordField" class="form-control" placeholder="Your Password *" v-model="newUser.password" />
+                            <input :type="passwordField" class="form-control" placeholder="password *" v-model="newUser.password" />
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="show-password">
+                                    <i class="fa" :title="passwordTitle"
+                                    :class="{'fa-eye': passwordField == 'password', 
+                                             'fa-eye-slash': passwordField == 'text'}" 
+                                    @click="toggleVisibility" ></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input :type="passwordField" class="form-control" placeholder="repeat password *" v-model="newUser.repeatPassword" />
                             <div class="input-group-append">
                                 <span class="input-group-text" id="show-password">
                                     <i class="fa" :title="passwordTitle"
@@ -41,7 +52,12 @@
                         </div>
                         <div class="form-group">
                             <input type="button" class="btnSubmit" value="Register" @click="register"/>
-                        </div>                        
+                        </div>      
+
+                        <div class="form-group errors text-left" v-if="registrationErrors != ''">  
+                            <h5>Errors:</h5>                          
+                            <pre class="errors">{{registrationErrors}}</pre>
+                        </div>                  
                     </form>
                 </div>
             </div>
@@ -59,10 +75,12 @@
                 },
                 newUser: {
 					username: '',
-                    password: ''
+                    password: '',
+                    repeatPassword: ''
                 },
                 passwordField: 'password',
-                passwordTitle: 'Reveal Password'              
+                passwordTitle: 'Reveal Password',
+                registrationErrors: ''             
 			}
         },
         mounted(){
@@ -97,13 +115,18 @@
                 if (response.data.registered){
                     this.registered = true
                     this.server_response = `User '${this.newUser.username}' is Successfully Registered`
+                    this.$toastr.i(this.server_response)
+                    // navigate to the home page
+                this.$router.push('user-details')	
                 }else{
                     this.registered = false
-                    this.server_response = `User '${this.newUser.username}' was not Registered. ${response.data.message}.`
-                }
-                this.$toastr.i(this.server_response)	
-                // navigate to the home page
-                this.$router.push('user-details')			
+                    this.registrationErrors = ''
+                    response.data.errors.forEach(error =>{
+                        this.registrationErrors += "- " + error + "\n"
+                    })
+                    this.server_response = `User was not Registered. There were ${response.data.message}.`
+                    this.$toastr.e(this.server_response)
+                }                	                		
 			},
             toggleVisibility: function(){
                 this.passwordField = this.passwordField === 'password'? 'text':'password'
@@ -150,6 +173,10 @@
     text-align: center;
     margin-bottom:12%;
     color: #fff;
+}
+
+.errors{
+    color: white;
 }
 .btnSubmit{
     font-weight: 600;

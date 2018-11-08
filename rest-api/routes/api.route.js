@@ -11,7 +11,7 @@ router.get('/reviews', reviewsController.getAllReviews)
 router.get('/reviews/:id', reviewsController.getReview)
 router.post('/reviews', reviewsController.addReview)
 
-// movies API
+// movies API (tested)
 router.get('/movies', moviesController.getAllMovies)
 router.get('/movies/:id', moviesController.getMovie)
 router.post('/movies', moviesController.addMovie)

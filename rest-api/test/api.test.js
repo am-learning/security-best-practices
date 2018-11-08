@@ -42,7 +42,7 @@ describe('Testing Movies API', () => {
     // since there is no data, I will first test the 'post' endpoint 
     // and insert a new movie (which will then help with the 'get' request) 
     describe('endpoint /POST movies', ()=> {
-        // behavior: it should find the endpoint (status 200)
+        // behavior: it should return a status of 201 (new resource successfully created)
         // behavior: it should insert one new movie record
             // the count before insert would be 0
             // the count after insert should be 1
@@ -62,7 +62,7 @@ describe('Testing Movies API', () => {
                 .end((err, res)=> {
                     if (err) return done(err)
 
-                    res.should.have.status(200)
+                    res.should.have.status(201)
                     res.body.should.be.an('object')
                     res.body.should.have.own.property('message')
                     res.body.message.should.equal('Successfully inserted new Movie')

@@ -25,7 +25,7 @@ const helmetOptions = {
 // CORS OPTIONS                                     ----------------------------------
 const allowedClients  = ['http://localhost:3000', 'http://localhost:8081']
 const headersToExpose = ['Authorization', 'Content-Length', 'X-Requested-With', 'Strict-Transport-Security', 'X-Frame-Options', 'X-XSS-Protection', 'X-Content-Type-Options', 'Content-Security-Policy']
-const headersToAllow  = ['Authorization', 'Content-Length', 'Origin']
+const headersToAllow  = ['Authorization', 'Content-type', 'Content-Length', 'Origin']
 const corsOptions = { 
     exposedHeaders: "Authorization",  // figure out which other 
     allowedHeaders: headersToAllow,
@@ -59,8 +59,7 @@ app.use(session({
     cookie: {
         secure: true,
         httpOnly: true,
-        domain: 'example.com',
-        path: 'foo/bar',
+        domain: 'localhost:3001',
         maxAge: 60000
       }
     })   

@@ -3,12 +3,12 @@ let movies = []
 
 // TODO: make sure the functions are async when the actual database is accessed
 exports.getAllMovies = (req, res) => {
-    res.status(200).send(movies)
+    res.status(200).json(movies)
 }
 
 exports.addMovie = (req, res) => {    
     movies.push(req.body)
-    res.status(200).json({message: "Successfully inserted new Movie"})
+    res.status(201).json({message: "Successfully inserted new Movie"})
 }
 
 exports.getMovie = (req, res) => {
