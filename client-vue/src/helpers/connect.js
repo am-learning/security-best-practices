@@ -7,6 +7,7 @@ let options = {
 }
 if (sessionStorage.getItem('user')){
   let token = JSON.parse(sessionStorage.getItem('user')).token
+  console.log(token)
   options.headers= {'Authorization': 'Bearer '+ token}
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div id="login">
+    <div id="login" class="page-background">
         <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form">
@@ -11,11 +11,15 @@
                         <div class="form-group">
                             <input type="password" class="form-control" placeholder="(password)" v-model="existingUser.password"/>
                         </div>
+                        <div class="form-group form-check text-left">
+                            <input type="checkbox" class="form-check-input" id="remember-me" v-model="existingUser.rememberMe">
+                            <label class="form-check-label" for="remember-me">Remember Me</label>
+                        </div>
                         <div class="form-group">
                             <input type="button" class="btnSubmit" value="Login" @click="login"/>
                         </div>
                         <div class="form-group">
-                            <a href="#" class="btnForgetPwd">Forget Password?</a>
+                            <a href="#" class="btnForgetPwd">Forgot Password?</a>
                         </div>
                     </form>
                 </div>
@@ -70,13 +74,14 @@
 		data(){
 			return{
 				existingUser: {
-					username: '',
-					password: ''
+					username: 'afshan@yahoo.com',
+                    password: 'asdf',
+                    rememberMe: false
                 },
                 newUser: {
-					username: '',
-                    password: '',
-                    repeatPassword: ''
+					username: 'afshan@yahoo.com',
+                    password: 'asdf',
+                    repeatPassword: 'asdf'
                 },
                 passwordField: 'password',
                 passwordTitle: 'Reveal Password',
@@ -86,20 +91,15 @@
         mounted(){
             this.$refs.login.focus()  // not working perfectly
         },
-		methods:{
-            
+		methods:{            
 			login: async function(){
                 //console.log(this.existingUser)
                 const response = await this.$server().post('login', this.existingUser)
-                // warning: the shorthand notation axios.post() might not be sending the correct header (auth) or information (username, pwd, token etc)
-                // might need to use axios({mehtod: post, ...})
                 console.log(response)
-                if (response.data.authenticated && response.data.authenticated == true){
-                    // save the user in the session storage for global access
-                    let user = {
-                        token: response.data.token,
-                        isAuthenticated: response.data.authenticated
-                    }
+                if (response.data && response.data.authenticated == true){
+                    // save the user in the session storage for persistence
+                    let user = response.data.user
+                    user.isAuthenticated= response.data.authenticated
                     sessionStorage.setItem('user', JSON.stringify(user))
 
                     // navigate to the home page
@@ -110,6 +110,7 @@
                 }				
             },
             register: async function(){
+                this.newUser.email= this.newUser.username
 				const response = await this.$server().post('register', this.newUser)
 				console.log(response)
                 if (response.data.registered){
@@ -117,14 +118,16 @@
                     this.server_response = `User '${this.newUser.username}' is Successfully Registered`
                     this.$toastr.i(this.server_response)
                     // navigate to the home page
-                this.$router.push('user-details')	
+                    this.$router.push('user-details')	
                 }else{
                     this.registered = false
                     this.registrationErrors = ''
-                    response.data.errors.forEach(error =>{
-                        this.registrationErrors += "- " + error + "\n"
-                    })
-                    this.server_response = `User was not Registered. There were ${response.data.message}.`
+                    if (response.data.errors){
+                        response.data.errors.forEach(error =>{
+                            this.registrationErrors += "- " + error + "\n"
+                        })
+                    }
+                    this.server_response = `User was not Registered. ${response.data.message}.`
                     this.$toastr.e(this.server_response)
                 }                	                		
 			},
@@ -178,6 +181,7 @@
 .errors{
     color: white;
 }
+
 .btnSubmit{
     font-weight: 600;
     width: 50%;
@@ -196,4 +200,5 @@
     text-decoration:none;
     color:#fff;
 }
+.form-check label{color: white;}
 </style>

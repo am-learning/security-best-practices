@@ -1,9 +1,14 @@
 <template>
-    <div id="movies">
-    
-        <h2>Movies</h2>
-        <div v-for="(m,key) in theater.movies" :key="key">
-            {{key }}: {{m.title}} - <i>{{ m.genre}}</i>
+    <div id="movies" class="page-background container-fluid">
+        <nav-bar/>
+        <div id="page-content">
+
+            <h2>Movies</h2>
+            <h4>{{serverMessage}}. here are your favorite movies</h4>
+            <div v-for="(m,key) in theater.movies" :key="key">
+                {{key }}: {{m.title}} - <i>{{ m.genre}}</i>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -26,17 +31,19 @@ export default {
                         {title: 'Lord of The Rings: The house of elrond', genre: 'Fantacy', year: 2001}
                     ]
                 }
-            ]
+            ],
+            serverMessage: ''
         }
     },
     mounted(){
-        //this.fetchMovies()
+        this.fetchMovies()
     },
     methods:{
         fetchMovies: async function(){
-            const response = await this.$server().get('api/movies')
+            const response = await this.$server().get('public/movies')
             console.log(response)
-            this.theater.movies = response.data
+            this.serverMessage  = response.data.message
+            this.theater.movies = response.data.movies    
         }
     }
     

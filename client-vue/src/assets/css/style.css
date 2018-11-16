@@ -1,1 +1,28 @@
 .uniform-width{ width: 10vw; }
+
+.page-background{
+	position: fixed;
+	width: 100vw;
+	left: 0;
+	top: 0;
+	height: 100vh;
+}
+#page-content{
+	position: fixed;
+	width: 100vw;
+	top: 10vh;
+    height: 80vh;
+    padding-top: 2vh;
+    overflow-y: auto;
+	left: 0;
+	background:rgba(0, 0, 0, 0.5);
+	color:#f1f1f1;
+}
+
+.border{
+    border: 1px solid;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin: 0 auto;
+}

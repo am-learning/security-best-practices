@@ -1,19 +1,15 @@
 const express = require('express')
 const router  = express.Router()
 const reviewsController = require('../controllers/reviews')
-const moviesController = require('../controllers/movies')
+const passport      = require('../helpers/passport')
 
 router.get('/', (req, res) => res.send('Hello API!'))
 
-
+/*** PROTECTED APIS ***/
 // reviews API
-router.get('/reviews', reviewsController.getAllReviews)
-router.get('/reviews/:id', reviewsController.getReview)
-router.post('/reviews', reviewsController.addReview)
+router.get('/reviews',      passport.authorize, reviewsController.getAllReviews)
+router.get('/reviews/:id',  passport.authorize, reviewsController.getReview)
+router.post('/reviews',     passport.authorize, reviewsController.addReview)
 
-// movies API (tested)
-router.get('/movies', moviesController.getAllMovies)
-router.get('/movies/:id', moviesController.getMovie)
-router.post('/movies', moviesController.addMovie)
 
 module.exports = router

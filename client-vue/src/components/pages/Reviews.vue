@@ -1,9 +1,12 @@
 <template>
-    <div id="reviews">
+    <div id="reviews" class="page-background container-fluid">
+        <nav-bar/>
+        <div id="page-content">
     
-        <h2>Reviews</h2>
-        <div v-for="review in reviews" :key="review.id">
-            {{review.content}} - <i>{{ review.postedBy}}</i>
+            <h2>Reviews</h2>
+            <div v-for="review in reviews" :key="review.id">
+                {{review.content}} - <i>{{ review.postedBy}}</i>
+            </div>
         </div>
     </div>
 </template>

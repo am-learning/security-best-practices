@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <div class="logo" hidden><img src="./assets/logo.png"></div>
     <keep-alive>
       <router-view/>
     </keep-alive>
+
+    <footer class="footer is-primary">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">Copyright © 2018 Ash Martin, All rights reserved. </div>
+          </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -25,11 +32,21 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  width: 98.7vw;
+  color: white;
+  background: url("./assets/images/grey-1.jpg") no-repeat center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
   left: 0;
 }
-.logo{
-  background: #427b8d;
+
+.footer{
+  position: fixed;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  top: 90vh;
+  height: 10vh;
+  width: 100vw;
+  color: #f05837;
+  padding-top: 10px;
 }
 </style>

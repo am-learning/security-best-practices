@@ -14,11 +14,27 @@ import ElementUI from 'element-ui'
 // Styles
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'font-awesome/css/font-awesome.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 import 'vue-toastr/dist/vue-toastr.css'
 import '@/assets/css/style.css'
+
+// Font Awesome 5: https://github.com/FortAwesome/vue-fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserEdit, faFilm, faComments, faCogs, faSun, faMoon, faSignOutAlt } 
+        from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(faUserEdit, faFilm, faComments, faCogs, faSun, faMoon, faSignOutAlt)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
+// Import Components
+import NavBar from './components/pieces/MenuNavBar'
+
+
+// Register components
+Vue.component('nav-bar', NavBar)
+
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, { locale })

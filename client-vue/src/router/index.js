@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
-import Reviews from '@/components/Reviews'
-import Movies from '@/components/Movies'
-import UserDetails from '@/components/UserDetails'
+import Login from '@/components/pages/Login'
+import Reviews from '@/components/pages/Reviews'
+import Movies from '@/components/pages/Movies'
+import UserDetails from '@/components/pages/UserDetails'
 
 
 const router = new Router({
