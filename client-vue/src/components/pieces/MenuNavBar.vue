@@ -53,11 +53,14 @@
 			}
 		},
 		methods: {
-			logout: function() {
-				console.log('logout')
-                // TODO: loging out doesnt clear the data in different pages
-				sessionStorage.removeItem('user')
-				this.$router.push({name: 'Login'})
+			logout: async function() {
+                console.log('logout')
+                const response = await this.$server().post('logout')
+                console.log(response) 
+                if (response.data.loggedOut){
+                    sessionStorage.removeItem('user')
+				    this.$router.push({name: 'Login'})
+                }       				
             }
 		}
 	}

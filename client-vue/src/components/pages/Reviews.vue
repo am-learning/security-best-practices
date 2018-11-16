@@ -4,8 +4,11 @@
         <div id="page-content">
     
             <h2>Reviews</h2>
-            <div v-for="review in reviews" :key="review.id">
+            <div v-if="!noData" v-for="review in reviews" :key="review.id">
                 {{review.content}} - <i>{{ review.postedBy}}</i>
+            </div>
+            <div v-else>
+                Not Authorized
             </div>
         </div>
     </div>
@@ -17,7 +20,8 @@ export default {
     name: 'reviews',
     data() {
         return {
-            reviews: []
+            reviews: [],
+            noData: false
         }
     },
     mounted(){
@@ -27,7 +31,12 @@ export default {
         fetchReviews: async function(){
             const response = await this.$server().get('api/reviews')
             console.log(response)
-            this.reviews = response.data
+            if (response.data.message){
+                this.noData = true
+            }
+            if (response.data){
+                this.reviews = response.data
+            }            
         }
     }
     

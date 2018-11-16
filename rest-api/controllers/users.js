@@ -132,5 +132,5 @@ exports.logout = (req, res) => {    // TODO: verify all this
     } 
 
     // return to client
-    res.status(200).json({message: 'User Successfully Logged Out'})
+    res.status(200).json({loggedOut: true, message: 'User Successfully Logged Out'})
 }
