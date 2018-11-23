@@ -141,12 +141,12 @@
 
 <style scoped>
 .login-container{
-    margin-top: 9%;
-    margin-bottom: 5%;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
 }
 .login-logo{
     position: relative;
-    margin-left: -41.5%;
+    margin-left: -41.5%; /* -12vw */
 }
 .login-logo img{
     position: absolute;

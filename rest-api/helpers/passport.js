@@ -30,6 +30,10 @@ passport.use('local',
         
         // 3. user successfully found/authenticated
         // TODO: Do I need to send a token to the client? what is token used for?
+        // seems like this token can be used for CSRF protection 
+        // No cookies = No CSRF
+        // (instead of the usual CSRF token sent as value of a hidden field in a POST request)
+        //https://security.stackexchange.com/questions/170388/do-i-need-csrf-token-if-im-using-bearer-jwt
         const token = `JWT ${jwt.sign({ id: user._id }, process.env.AUTH_SECRET)}`
         user.token = token
         delete user.password
@@ -58,11 +62,17 @@ passport.deserializeUser(async (id, done) => {
 })
 
 exports.authorize = (req, res, next) => {
-    //console.log(req.session)
-	//console.log(req.user)
-	console.log(`Route ${req.isAuthenticated() ? 'is':'is not'} Authorized`)
+    const message = `Route ${req.isAuthenticated() ? 'is':'is not'} Authorized`
+    console.log(message)
+    
+    if (req.session.visits){
+        console.log(req.session.visits)
+        req.session.visits++
+    }  
+
     if (req.isAuthenticated()) {
         return next()
     }
-    res.json({message: 'Route is not Authorized'})
+    
+    res.json({message})
 }

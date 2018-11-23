@@ -12,7 +12,7 @@ const MongoStore= require('connect-mongodb-session')(session)   // for storing s
 const passport  = require('passport')               // for authentication
 
 // HELPERS                                          ----------------------------------
-const mongoose  = require('./helpers/mongo.connection')
+const mongoose  = require('./helpers/mongo')
 
 // INSTANTIATE THE APP                              ----------------------------------
 const app       = express()
@@ -70,7 +70,7 @@ store.on('error', function(error) {
 })
 
 
-// the order of 'user' is important                 ----------------------------------
+// the order of 'middleware use' is important                 ----------------------------------
 app.use(helmet(helmetOptions))
 app.use(cors(corsOptions))                              // omit the corsOptions if you want to use default CORS policy (not a good idea)
 app.use(express.static(path.join(__dirname, '../client-vue/dist'))) // https://expressjs.com/en/starter/static-files.html

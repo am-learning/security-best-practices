@@ -6,9 +6,17 @@
 
     <footer class="footer is-primary">
       <div class="container">
-          <div class="row">
-              <div class="col-md-12">Copyright © 2018 Ash Martin, All rights reserved. </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <font-awesome-icon :icon="['fab', 'facebook-f']" class="social-media-icons"/>
+            <font-awesome-icon :icon="['fab', 'twitter']" class="social-media-icons"/>
+            <font-awesome-icon :icon="['fab', 'github']" class="social-media-icons"/>
+            <font-awesome-icon :icon="['fab', 'linkedin-in']" class="social-media-icons"/>            
           </div>
+        </div>  
+        <div class="row copy-rights">
+            <div class="col-md-12">Copyright © 2018 Ash Martin, All rights reserved. </div>              
+        </div>
       </div>
     </footer>
   </div>
@@ -48,5 +56,10 @@ export default {
   width: 100vw;
   color: #f05837;
   padding-top: 10px;
+}
+.copy-rights{font-size: medium;}
+.social-media-icons{
+  margin: 3px 15px 5px;
+  font-size: larger;
 }
 </style>

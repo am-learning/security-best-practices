@@ -2,25 +2,21 @@
     <div id="details" class="page-background">
         <nav-bar/>
         <div id="page-content"> 
-            <h2>User Details</h2>            
+            <h2>User Details</h2><br>            
             <div class="container">  
                 <hr>
                 <div class="row">
                     <div class="col-md-10 offset-1">
                         <form class="text-left search-form">
                             <div class="row form-group">
-                                <div class="col-md">
-                                 
+                                <div class="col-md">                                 
                                     <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="(First Name)">
-                                    
+                                    <input type="text" class="form-control" id="firstName" placeholder="(First Name)">                                    
                                 </div>
 
-                                <div class="col-md">
-                                    
+                                <div class="col-md">                                    
                                     <label for="lastName">First Name</label>
-                                    <input type="text" class="form-control" id="lastName" placeholder="(Last Name)">
-                                    
+                                    <input type="text" class="form-control" id="lastName" placeholder="(Last Name)">                                    
                                 </div>                            
                             </div>
 

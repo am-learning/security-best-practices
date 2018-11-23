@@ -14,6 +14,7 @@ import ElementUI from 'element-ui'
 // Styles
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'font-awesome/css/font-awesome.css'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
 import 'vue-toastr/dist/vue-toastr.css'
@@ -23,8 +24,10 @@ import '@/assets/css/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserEdit, faFilm, faComments, faCogs, faSun, faMoon, faSignOutAlt } 
         from '@fortawesome/free-solid-svg-icons'
+import { faFacebookF, faTwitter, faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faUserEdit, faFilm, faComments, faCogs, faSun, faMoon, faSignOutAlt)
+library.add(faUserEdit, faFilm, faComments, faCogs, faSun, faMoon, faSignOutAlt, 
+            faTwitter, faFacebookF, faLinkedinIn, faGithub)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 

@@ -32,33 +32,36 @@ exports.login = (req, res, next) => {
                 }else{                      
                     // Regenerate session with a new Id 
                     // this is to avoid using the same session as was created for the Public/guest access
-                    req.session.regenerate((err) =>{                            
-                        if (err) {
-                            console.log(err)
-                            return next(err)
-                        }   
-                        // add basic information to the session
-                        req.session.type    = 'loggedIn'   
-                        req.session.user    = user.username
-                        req.session.visits  = 1
-
-                        // set the cookie age to a month, if 'Remember Me' is set for the user currently logging in                       
-                        if (req.body.rememberMe){
-                            req.session.rememberMe      = true
-                            req.session.cookie.maxAge   = 30 * 24 * 60 * 60 * 1000  // set to 1 month
-                        } 
-
-                        // log the user in to the passport session
-                        req.login(user, err =>{
-                            if (err){
-                                console.log(err.message)
+                    if (!req.session.passport){
+                        console.log('No session exists for the user')
+                        req.session.regenerate((err) =>{                            
+                            if (err) {
+                                console.log(err)
                                 return next(err)
-                            }
-                            //console.log('added user to the req.user')                   
-                            let nonSensitiveUser = {username:user.username, email:user.email, token: user.token}
-                            res.json({authenticated: true, user: nonSensitiveUser})
+                            }   
+                            // add basic information to the session
+                            req.session.type    = 'loggedIn'   
+                            req.session.user    = user.username
+                            req.session.visits  = 1
+
+                            // set the cookie age to a month, if 'Remember Me' is set for the user currently logging in                       
+                            if (req.body.rememberMe){
+                                req.session.rememberMe      = true
+                                req.session.cookie.maxAge   = 30 * 24 * 60 * 60 * 1000  // set to 1 month
+                            } 
+
+                            // log the user in to the passport session
+                            req.login(user, err =>{
+                                if (err){
+                                    console.log(err.message)
+                                    return next(err)
+                                }
+                                //console.log('added user to the req.user')                   
+                                let nonSensitiveUser = {username:user.username, email:user.email, token: user.token}
+                                res.json({authenticated: true, user: nonSensitiveUser})
+                            })
                         })
-                    })                                                                    
+                    }                                                                                        
                 }
             }
         })(req, res, next)
@@ -120,17 +123,18 @@ exports.register = async (req, res, next) => {
     }  
 }
 
-exports.logout = (req, res) => {    // TODO: verify all this
+exports.logout = (req, res) => {   
     // Log out from the passport session
     req.logout()
     // clear the session cookie on the server and the client
     if (req.session.user) {
         res.clearCookie(process.env.SESSION_ID)     // client cookie
-        req.session.destroy(function(err){          // server cookie
+        req.session.destroy(function(err){          // server session/cookie
             if(err)     console.log(err)
         })
     } 
 
+    console.log('User Logged out, session destroyed')
     // return to client
     res.status(200).json({loggedOut: true, message: 'User Successfully Logged Out'})
 }
