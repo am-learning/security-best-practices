@@ -134,6 +134,18 @@ exports.logout = (req, res) => {
         })
     } 
 
+/*
+req.session.destroy(function(err){
+          req.logout();
+          res.clearCookie('user_sid');
+          res.clearCookie('first_name');
+          res.clearCookie('user_id');
+          console.log('User Logged out, session destroyed')
+    // return to client
+    res.status(200).json({loggedOut: true, message: 'User Successfully Logged Out'})
+        })
+*/
+	
     console.log('User Logged out, session destroyed')
     // return to client
     res.status(200).json({loggedOut: true, message: 'User Successfully Logged Out'})
