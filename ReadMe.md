@@ -750,13 +750,18 @@ The table below compares cookie-session middleware and express- session
 middleware with respect to Sessions:
 
 +----------------+-----------------------+----------------------+
+
 |                |   Client-side store   |   Server-side store  |
 |                |        (cookie)       |  (in-memory, db ..)  |
+
 +----------------+-----------------------+----------------------+
+
 | Middleware     | Used?  |    Content   | Used? |    Content   |
 +----------------+--------+--------------+-------+--------------+
+
 | session        |   Yes  |  Session ID  |  Yes  | Session data |
 +----------------+--------+--------------+-------+--------------+
+
 | cookie-session |   Yes  | Session data |   No  |      N/A     |
 +----------------+--------+--------------+-------+--------------+
 
@@ -844,13 +849,13 @@ JWT
 
 Every route file must have lines 1, 2 and 3
 ```
-1\. const express = require(\'express\')
+1. const express = require(\'express\')
 
-2\. const router = express.Router()
+2. const router = express.Router()
 
 // bunch of routes
 
-3\. module.exports = router
+3. module.exports = router
 ```
 
 In case of fetch route in a client-side code. If you do not
