@@ -745,11 +745,11 @@ Middleware Comparison
 The table below compares cookie-session middleware and express- session
 middleware with respect to Sessions:
 
-
-| Middleware     | Used?  |    Content   | Used? |    Content   |
-|:---            |:---    |:---          |:---   |:---          |
-| session        |   Yes  |  Session ID  |  Yes  | Session data |
-| cookie-session |   Yes  | Session data |   No  |      N/A     |
+|                |   Client-side store (cookie)  	||   Server-side store (in-memory, db ..)  	||
+|:---            |:---                           	||:---        								||
+| Middleware     | Used?  |    Content   			| Used? |    Content   |
+| session        |   Yes  |  Session ID  			|  Yes  | Session data |
+| cookie-session |   Yes  | Session data 			|   No  |      N/A     |
 
 
 ### express-session vs passport
