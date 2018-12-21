@@ -749,6 +749,7 @@ Middleware Comparison
 The table below compares cookie-session middleware and express- session
 middleware with respect to Sessions:
 
+
 +----------------+-----------------------+----------------------+
 |                |   Client-side store   |   Server-side store  |
 |                |        (cookie)       |  (in-memory, db ..)  |
@@ -759,6 +760,7 @@ middleware with respect to Sessions:
 +----------------+--------+--------------+-------+--------------+
 | cookie-session |   Yes  | Session data |   No  |      N/A     |
 +----------------+--------+--------------+-------+--------------+
+
 
 ### express-session vs passport
 
