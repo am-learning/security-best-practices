@@ -1031,7 +1031,7 @@ REVIEW this
 to reverse-proxy settings on the server*
 
 *https://github.com/expressjs/session/issues/281\#issuecomment-191283280*
-
+```javascript
 *const expressSession = require(\'cookie-session\')*
 
 *var expiryDate = new Date(Date.now() + 7 \* 24 \* 60 \* 60 \* 1000); //
@@ -1060,6 +1060,7 @@ to reverse-proxy settings on the server*
 *})*
 
 *app.use(session)*
+```
 
 *I just changed require(\'express-session\') to
 require(\'cookie-session\') and added secureProxy: true, everything
