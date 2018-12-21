@@ -1032,31 +1032,18 @@ to reverse-proxy settings on the server*
 
 *https://github.com/expressjs/session/issues/281\#issuecomment-191283280*
 ```javascript
-const expressSession = require(\'cookie-session\')
-
-var expiryDate = new Date(Date.now() + 7 \* 24 \* 60 \* 60 \* 1000); //
-7 days*
-
+const expressSession = require('cookie-session')
+const expiryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
 const session = expressSession({
-
-secret: sessionSecret,
-
-resave: false,
-
-saveUninitialized: true,
-
-cookie: {
-
-secureProxy: true,
-
-httpOnly: true,
-
-domain: \'beintoo.net\',
-
-expires: expiryDate
-
-}
-
+    secret: sessionSecret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secureProxy: true,
+        httpOnly: true,
+        domain: 'beintoo.net',
+        expires: expiryDate
+    }
 })
 
 app.use(session)
