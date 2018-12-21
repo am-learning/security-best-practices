@@ -364,7 +364,9 @@ There are two concepts to remember:
 Authentication Types
 ----------------------
 
-![Cookie vs Token-Based Authentication](https://github.com/afshanaman81/security-best-practices/blob/master/Auth%20with%20Token.png)
+![Cookie vs Token-Based Authentication]
+(https://github.com/afshanaman81/security-best-practices/blob/master/TokenBasedAuth1.png)
+(https://github.com/afshanaman81/security-best-practices/blob/master/TokenBasedAuth.png)
 
 ### **Session/Cookie-based Authentication** 
 
