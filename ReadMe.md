@@ -29,7 +29,7 @@ Vulnerabilities and Threats
 -   How to Protect?
     -   Sanitize your input fields!
 
-- Cross Site Request Forgery (CSRF)
+Cross Site Request Forgery (CSRF)
 -----------------------------------
 
 -   <https://www.owasp.org/index.php/Cross-Site_Request_Forgery_(CSRF)>
@@ -107,7 +107,7 @@ Vulnerabilities and Threats
                 via cookies), you don\'t have to worry about CSRF
                 protection.
 
-- SQL Injection
+SQL Injection
 ---------------
 
 -   SQL injection consists of injection of a partial or complete SQL
@@ -124,10 +124,10 @@ Vulnerabilities and Threats
     -   The easiest way to defend against these kind of attacks is to
         use parameterized queries or prepared statements.
 
-- Man in the Middle Attacks
+Man in the Middle Attacks
 ---------------------------
 
-- Session Hijacking, Sniffing
+Session Hijacking, Sniffing
 -----------------------------
 
 Client Side
