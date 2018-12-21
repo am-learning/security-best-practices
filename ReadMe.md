@@ -654,7 +654,7 @@ Configures the Content Security Policy;
     -   or allowing specific origins only
     -   The default configuration is the equivalent of:
 
-```javascript
+```
 {
 
 \"origin\": \"\*\",
@@ -749,39 +749,16 @@ Middleware Comparison
 The table below compares cookie-session middleware and express- session
 middleware with respect to Sessions:
 
-**Client-side Store (cookie)**
-
-**Server-side Store (in memory, db etc)**
-
-**Middleware**
-
-***Used?***
-
-***What is stored?***
-
-***Used?***
-
-***What is stored?***
-
-**cookie-session**
-
-Yes
-
-All session data
-
-No
-
-N/A
-
-**Express-session**
-
-Yes
-
-Only Session Id
-
-Yes
-
-All Session data
++----------------+-----------------------+----------------------+
+|                |   Client-side store   |   Server-side store  |
+|                |        (cookie)       |  (in-memory, db ..)  |
++----------------+-----------------------+----------------------+
+| Middleware     | Used?  |    Content   | Used? |    Content   |
++----------------+--------+--------------+-------+--------------+
+| session        |   Yes  |  Session ID  |  Yes  | Session data |
++----------------+--------+--------------+-------+--------------+
+| cookie-session |   Yes  | Session data |   No  |      N/A     |
++----------------+--------+--------------+-------+--------------+
 
 ### express-session vs passport
 
