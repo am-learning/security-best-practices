@@ -654,7 +654,8 @@ Configures the Content Security Policy;
     -   or allowing specific origins only
     -   The default configuration is the equivalent of:
 
-```{
+```javascript
+{
 
 \"origin\": \"\*\",
 
@@ -664,7 +665,8 @@ Configures the Content Security Policy;
 
 \"optionsSuccessStatus\": 204
 
-}```
+}
+```
 
 -   Since our vue/react clients are running on a different URL than the
     API server,
