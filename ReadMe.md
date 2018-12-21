@@ -173,11 +173,11 @@ Input Forms
 
 -   <https://lukeplant.me.uk/blog/posts/why-escape-on-input-is-a-bad-idea/>
 
-###  - Need for Sanitization and Escaping**
+###  - **Need for Sanitization and Escaping**
 
-####  - User Data in SQL Statements****
+####  - ****User Data in SQL Statements****
 
-####  - User Data in HTML Document****
+####  - ****User Data in HTML Document****
 
 #### - User Data in URL
 
