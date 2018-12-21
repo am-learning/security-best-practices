@@ -173,11 +173,11 @@ Input Forms
 
 -   <https://lukeplant.me.uk/blog/posts/why-escape-on-input-is-a-bad-idea/>
 
-### ** - Need for Sanitization and Escaping**
+###  - Need for Sanitization and Escaping**
 
-#### **** - User Data in SQL Statements****
+####  - User Data in SQL Statements****
 
-#### **** - User Data in HTML Document****
+####  - User Data in HTML Document****
 
 #### - User Data in URL
 
@@ -656,15 +656,10 @@ Configures the Content Security Policy;
 
 ```
 {
-
-\"origin\": \"\*\",
-
-\"methods\": \"GET,HEAD,PUT,PATCH,POST,DELETE\",
-
-\"preflightContinue\": false,
-
-\"optionsSuccessStatus\": 204
-
+"origin": "*",
+"methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+"preflightContinue": false,
+"optionsSuccessStatus": 204
 }
 ```
 
@@ -1025,44 +1020,48 @@ name: \'sessionId\' // this should be random name, and coming from the
 
 <http://www.connecto.io/blog/nodejs-express-how-to-set-multiple-cookies-in-the-same-response-object/>
 
-REVIEW this
 
-*\*\*\*\*\*\*\*\*\*\* this is someone\'s secured cookies not working due
-to reverse-proxy settings on the server*
 
-*https://github.com/expressjs/session/issues/281\#issuecomment-191283280*
-```javascript
-const expressSession = require('cookie-session')
-const expiryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
-const session = expressSession({
-    secret: sessionSecret,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-        secureProxy: true,
-        httpOnly: true,
-        domain: 'beintoo.net',
-        expires: expiryDate
-    }
-})
+        REVIEW this
 
-app.use(session)
-```
+        *\*\*\*\*\*\*\*\*\*\* this is someone\'s secured cookies not working due
+        to reverse-proxy settings on the server*
 
-*I just changed require(\'express-session\') to
-require(\'cookie-session\') and added secureProxy: true, everything
-worked out of the box.*
+        *https://github.com/expressjs/session/issues/281\#issuecomment-191283280*
+        ```javascript
+        const expressSession = require('cookie-session')
+        const expiryDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000); // 7 days
+        const session = expressSession({
+            secret: sessionSecret,
+            resave: false,
+            saveUninitialized: true,
+            cookie: {
+                secureProxy: true,
+                httpOnly: true,
+                domain: 'beintoo.net',
+                expires: expiryDate
+            }
+        })
 
-*Note also that both packages are maintained by expressjs so probably in
-my use case, I was lucky finding out that cookie-session fits my needs.*
+        app.use(session)
+        ```
 
-*\*\*\*\*\*\* Someone\'s Answer: Note that this was caused by a
-misconfigured reverse proxy in front of express*
+        *I just changed require(\'express-session\') to
+        require(\'cookie-session\') and added secureProxy: true, everything
+        worked out of the box.*
 
-*(X-Forwarded-Proto was missing). Secure cookies are fully supported by
-express-session as well*
+        *Note also that both packages are maintained by expressjs so probably in
+        my use case, I was lucky finding out that cookie-session fits my needs.*
 
-*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**
+        *\*\*\*\*\*\* Someone\'s Answer: Note that this was caused by a
+        misconfigured reverse proxy in front of express*
+
+        *(X-Forwarded-Proto was missing). Secure cookies are fully supported by
+        express-session as well*
+
+        *\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\**
+
+
 
 UI Frameworks
 =============
@@ -1080,3 +1079,4 @@ Vue
 
 React
 -----
+(to be written)
