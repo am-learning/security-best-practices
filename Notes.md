@@ -16,7 +16,7 @@ Vulnerabilities and Threats
 - Cross Site Scripting (XSS)
 ----------------------------
 
--   -   -   <https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet>
+-  <https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet>
 
 -   What is it?
     -   XSS attacks occur when an outside entity is able to execute code
