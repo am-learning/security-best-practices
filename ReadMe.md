@@ -749,7 +749,6 @@ Middleware Comparison
 The table below compares cookie-session middleware and express- session
 middleware with respect to Sessions:
 
-
 +----------------+-----------------------+----------------------+
 |                |   Client-side store   |   Server-side store  |
 |                |        (cookie)       |  (in-memory, db ..)  |
@@ -844,7 +843,7 @@ JWT
 ------------
 
 Every route file must have lines 1, 2 and 3
-
+```javascript
 1\. const express = require(\'express\')
 
 2\. const router = express.Router()
@@ -852,6 +851,7 @@ Every route file must have lines 1, 2 and 3
 // bunch of routes
 
 3\. module.exports = router
+```
 
 In case of fetch route in a client-side code. If you do not
 specify credentials: \'include\' in fetch options, cookies are neither
