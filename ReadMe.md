@@ -126,9 +126,11 @@ SQL Injection
 
 Man in the Middle Attacks
 ---------------------------
+(to be written)
 
 Session Hijacking, Sniffing
 -----------------------------
+(to be written)
 
 Client Side
 ===========
@@ -163,25 +165,25 @@ Input Forms
 -   <https://codex.wordpress.org/Data_Validation#Input_Validation>
 -   **Rule: Filter on input, escape on output**
 
-### Validation
+### - Validation
 
-### Sanitization
+### - Sanitization
 
-### Escaping
+### - Escaping
 
 -   <https://lukeplant.me.uk/blog/posts/why-escape-on-input-is-a-bad-idea/>
 
-### **Need for Sanitization and Escaping**
+### ** - Need for Sanitization and Escaping**
 
-#### ****User Data in SQL Statements****
+#### **** - User Data in SQL Statements****
 
-#### ****User Data in HTML Document****
+#### **** - User Data in HTML Document****
 
-#### User Data in URL
+#### - User Data in URL
 
-#### User Data in \<script\>
+#### - User Data in \<script\>
 
-#### User Data in CSS
+#### - User Data in CSS
 
 Login Process
 ---------------
@@ -291,6 +293,7 @@ impersonating users.
 
 Password Recovery Process
 ---------------------------
+(to be written)
 
 Client Side Session Management
 --------------------------------
@@ -651,7 +654,7 @@ Configures the Content Security Policy;
     -   or allowing specific origins only
     -   The default configuration is the equivalent of:
 
-{
+```{
 
 \"origin\": \"\*\",
 
@@ -661,7 +664,7 @@ Configures the Content Security Policy;
 
 \"optionsSuccessStatus\": 204
 
-}
+}```
 
 -   Since our vue/react clients are running on a different URL than the
     API server,
