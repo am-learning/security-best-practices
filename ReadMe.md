@@ -13,7 +13,7 @@ The Goal
 Vulnerabilities and Threats
 ===========================
 
-- Cross Site Scripting (XSS)
+Cross Site Scripting (XSS)
 ----------------------------
 
 -  <https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet>
@@ -133,7 +133,7 @@ Session Hijacking, Sniffing
 Client Side
 ===========
 
-- Considerations
+Considerations
 ----------------
 
 -   How to log in
@@ -157,7 +157,7 @@ Client Side
 -   Checking password strength
 -   E-mail validation
 
-- Input Forms
+Input Forms
 -------------
 
 -   <https://codex.wordpress.org/Data_Validation#Input_Validation>
@@ -183,7 +183,7 @@ Client Side
 
 #### User Data in CSS
 
-- Login Process
+Login Process
 ---------------
 
 -   provide generic/local strategy as well as Social Media login
@@ -202,7 +202,7 @@ Client Side
     -   CSRF protection
         (<https://www.acunetix.com/websitesecurity/csrf-attacks/>)
 
-- User Registration Process
+User Registration Process
 ---------------------------
 
 -   Using emails as username
@@ -224,7 +224,7 @@ Client Side
 -   Form Input Validation using Vuelidate:
     <https://medium.com/js-dojo/simple-vue-js-form-validation-with-vuelidate-722331e5ab0d>
 
-- Remember Me Process
+Remember Me Process
 ---------------------
 
 -   <https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence>
@@ -289,10 +289,10 @@ impersonating users.
     database
 -   How to have two cookies in one session?
 
-- Password Recovery Process
+Password Recovery Process
 ---------------------------
 
-- Client Side Session Management
+Client Side Session Management
 --------------------------------
 
 -   **cookies**
@@ -313,7 +313,7 @@ impersonating users.
     -   Web storage is per origin (per domain and protocol). All pages,
         from one origin, can store and access the same data.
 
-- Client Side Security
+Client Side Security
 ----------------------
 
 ### Considerations
@@ -358,7 +358,7 @@ There are two concepts to remember:
             checked to be authenticated.
     -   This can be done using passport too!
 
-- Authentication Types
+Authentication Types
 ----------------------
 
 ![Cookie vs Token-Based
@@ -509,7 +509,7 @@ Authentication](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7YAAAIcCAIAAABNaK
     would invalidate all active tokens and require all of your users to
     log in again.
 
-- Client Side Issues
+Client Side Issues
 --------------------
 
 -   To use JWT tokens in the browser you have to store it in either
@@ -521,7 +521,7 @@ Authentication](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7YAAAIcCAIAAABNaK
 -   <https://blog.sqreen.io/authentication-best-practices-vue/>
 -   <https://blog.jscrambler.com/vue-js-authentication-system-with-node-js-backend/?utm_medium=referral&utm_source=reddit.com>
 
-- Server Side Issues
+Server Side Issues
 --------------------
 
 -   For supporting web application only, either cookies or tokens are
@@ -545,7 +545,7 @@ Authentication](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7YAAAIcCAIAAABNaK
 Server Side
 ===========
 
-- Considerations
+Considerations
 ----------------
 
 -   Authentication
@@ -565,7 +565,7 @@ Server Side
     -   To avoid CSRF attacks which would attempt to change a user's
         password on a server where the user is logged in.
 
-- Express Middleware
+Express Middleware
 --------------------
 
 Express is an un-opinionated, lightweight framework. Therefore, we need
@@ -714,7 +714,7 @@ Configures the Content Security Policy;
                 requests) for it to work
                 -   But the question is: do I need it?
 
-- Middleware Comparison
+Middleware Comparison
 -----------------------
 
 ### express-session vs cookie-session
@@ -874,7 +874,7 @@ specify credentials: \'include\' in fetch options, cookies are neither
 sent to server nor saved by a browser, although the server response sets
 cookies.
 
-- Security
+Security
 ----------
 
 ### Links
@@ -917,7 +917,7 @@ certificate
 -   I should learn to force a session/token to expire pre-maturely
     -   e.g in response to a suspicion of un-authorized activity
 
-- Server Side Session Management (using express-session)
+Server Side Session Management (using express-session)
 --------------------------------------------------------
 
 -   If you want two separate session objects, one for regular usage and
