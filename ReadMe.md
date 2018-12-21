@@ -843,7 +843,7 @@ JWT
 ------------
 
 Every route file must have lines 1, 2 and 3
-```javascript
+```
 1\. const express = require(\'express\')
 
 2\. const router = express.Router()
